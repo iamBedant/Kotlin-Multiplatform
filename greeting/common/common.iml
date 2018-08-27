@@ -17,7 +17,7 @@
         <compilerSettings />
         <compilerArguments>
           <option name="destination" value="$MODULE_DIR$/build/classes/kotlin/main" />
-          <option name="classpath" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.41/bf0bdac1048fd1c5c54362978dd7e06bd2230e78/kotlin-stdlib-common-1.2.41.jar" />
+          <option name="classpath" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.60/d95e6419da840e672342e5d4348f0bdd1d58b84d/kotlin-stdlib-common-1.2.60.jar" />
           <option name="moduleName" value="common" />
           <option name="languageVersion" value="1.2" />
           <option name="apiVersion" value="1.2" />
@@ -46,6 +46,6 @@
     </content>
     <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="kotlin-stdlib-common-1.2.41" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-stdlib-common-1.2.60" level="project" />
   </component>
 </module>

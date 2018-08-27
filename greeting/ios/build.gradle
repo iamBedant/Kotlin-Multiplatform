@@ -1,17 +1,41 @@
-apply plugin: 'konan'
+apply plugin: 'kotlin-platform-native'
 
-// Specify targets to build the framework: iOS and iOS simulator
-konan.targets = ['ios_arm64', 'ios_x64']
+sourceSets {
+main {
+component {
+baseName.set("Greeting")
+target 'ios_arm32', 'ios_arm64', 'ios_x64'
+outputKinds = [FRAMEWORK]
+}
+}
+test {
+component {
+target 'ios_x64'
+}
+}
+}
 
-konanArtifacts {
-    // Declare building into a framework.
-    framework('Greeting') {
-        // The multiplatform support is disabled by default.
-        enableMultiplatform true
-    }
+task copyFramework() {
+doLast {
+def srcFile = tasks['compileDebugIos_x64KotlinNative'].outputFile
+def targetDir = getProperty("konan.configuration.build.dir")
+copy {
+from srcFile.parent
+into targetDir
+include 'Greeting.framework/**'
+include 'Greeting.framework.dSYM'
+}
+}
+}
+
+afterEvaluate { project ->
+project.task('test', dependsOn: 'compileTestDebugKotlinNative', type: Exec, overwrite: true) {
+def textExecutable = tasks["compileTestDebugKotlinNative"].outputFile
+commandLine("xcrun", "simctl", "spawn", "iPhone 8", textExecutable)
+}
 }
 
 dependencies {
-    // Specify dependency on a common project for Kotlin multiplatform build
-    expectedBy project(':greeting:common')
+// Specify dependency on a common project for Kotlin multiplatform build
+expectedBy project(':greeting:common')
 }

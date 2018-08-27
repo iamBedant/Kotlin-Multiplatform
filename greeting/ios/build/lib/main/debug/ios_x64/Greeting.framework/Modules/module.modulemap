@@ -1,0 +1,6 @@
+framework module Greeting {
+    umbrella header "Greeting.h"
+
+    export *
+    module * { export * }
+}
